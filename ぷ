@@ -1,0 +1,42 @@
+#Quiz1- 年齢計算プログラム
+print("=============齢計算プログラム=============")
+nowyear = input("今年の年度を四けたの数字で入力しなさい： ")
+birthyear = input ("あなたが生まれた年度を四けたの数字で入力しなさい：")
+
+age = int(nowyear) - int(birthyear) + 1
+
+print("あなたの年は %d歳です."% age)
+
+
+
+
+#Quiz2- エレベーターの利用可能重さ計算
+'''
+* 600kg制限の貨物用エレベーターがある. 2つの物に対する重さを
+   入力を間違えてもらって現在のエレベーターにもっと載積 できる重さを測定しなさい.
+'''
+print("=============エレベーターの利用可能重さ計算=============")
+kg1 = float(input("一番目の物の重さを入力しなさい.: "))
+
+kg2 = float(input("ニ番目の物の重さを入力しなさい.: "))
+
+kg3 = 600 - (kg1 + kg2)
+
+print("現在のエレベーターにもっと載積 できる重さは %.2fkg です." %(kg3))
+
+
+
+
+
+#Quiz３- 肥満度や標準体重求める
+
+weight = float(input("現在の体重を入力してください。 : "))
+standardweight = float(input("標準体重を入力してください。 (標準体重を知らないなら0を入力しなさい.) : "))
+
+if (standardweight == 0):
+    height = float(input("背を入力してください。 : "))
+    standardweight = (height - 100) * 0.9
+    print("あなたの標準体重は {:.1f}です。".format(standardweight))
+
+    obesity = (weight/standardweight)*100
+print("あなたの肥満度は {:.2f}입니다.".format(obesity))
