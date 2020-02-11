@@ -1,0 +1,227 @@
+#日数,時間出力プログラム
+import datetime
+
+now=datetime.datetime.now()
+
+print("{}年{}月{}日{}時{}分{}秒".format(
+    now.year,
+    now.month,
+    now.day,
+    now.hour,
+    now.minute,
+    now.second
+    )
+      )
+
+
+
+
+
+#午前、午後を区分するプログラム
+import datetime
+
+now=datetime.datetime.now()
+
+if now.hour<12:
+    print("現在時刻は{}時で午前です。".format(now.hour))
+
+if now.hour>12:
+    print("現在時刻は{}時で午後です。".format(now.hour))
+
+
+
+
+
+
+#季節を区分するプログラム
+str_input = input("生まれた年を入力してください。:")
+birth_year = int(str_input)%12
+
+
+if birth_year == 0:
+    print("サル年生まれです.")
+    
+elif birth_year == 1:
+    print("酉年生まれです.")
+    
+elif birth_year == 2:
+    print("戌年生まれです.")
+    
+elif birth_year == 3:
+    print("亥年生まれです.")
+    
+elif birth_year == 4:
+    print("子年生まれです.")
+
+elif birth_year == 5:
+    print("丑年生まれです.")
+
+elif birth_year == 6:
+    print("寅年生まれです.")
+
+elif birth_year == 7:
+    print("卯年生まれです.")
+
+elif birth_year == 8:
+    print("辰年生まれです.")
+
+elif birth_year == 9:
+    print("巳年生まれです.")
+
+elif birth_year == 10:
+    print("午年生まれです.")
+
+elif birth_year == 11:
+    print("未年生まれです.")
+
+
+
+
+
+    
+#例題１
+arr=[1,2,3,4,5]    
+
+na=int(input("探す数字を入力:"))
+
+if na in arr:   
+    print("arr:",arr,"探す数字があります。", na)
+else:
+    print("arr:",arr,"中には探す数字がありません。", na)
+
+print("結果:", na in arr)  
+
+
+
+#例題2
+st="Hello Python Fun" 
+
+na= input("探す数字列を入力:")
+
+if na in st:
+    print("st:", st, "探す数字列:",na, "あります")
+else:
+    print("st 中には:",na,"ありません.")
+
+
+
+#例題3
+old_id=input("貯蔵するID入力: ")
+print("認証プログラムです。")
+print("IDとPWを入力してください。: ")
+new_id==input("ID入力: ")
+if old_id==new_id:
+    print("認証通りました。")
+else:
+        print("認証失敗")
+
+
+
+
+
+
+
+
+#<Quiz>
+'''
+1. 名前、学籍番号、3科目の成績を入力されて合計と平均を求めて、
+平均が90点以上なら「A」, '80点以上なら「 B」,'70点以上なら「C」,'60点以上なら「D」,'60点未満なら「F」
+を出力しなさい｡
+'''
+name = input("名前入力: "); stunum = int(input("学籍番号入力: "))
+kor = int(input('日本語点数:'))
+eng = int(input('英語点数:'))
+mat = int(input('数学点数:'))
+
+
+s = kor +eng + mat
+avg = s/3;
+print("点数の合計: %d"% s)
+print("点数の平均: %d"% avg)
+
+
+if avg >= 90:
+    result = "A";
+elif avg >= 80:
+    result = "B";
+elif avg >= 70:
+    result = "C";
+elif avg >= 60:
+    result = "D";
+else:
+    result = "F";
+
+
+print("===========  学生情報===========")
+print("名前: %s\t 学籍番号: %d"% (name, stunum))
+print("合計: %d\t 平均: %f\t 単位: %s"% (s, avg, result))
+
+
+
+
+
+#<Quiz>
+'''
+2. コーヒーは一杯当たり200円だ。 十杯を過ぎたら過ぎた分だけで
+一杯当たり150円ずつ払う。コーヒーの個数を入力されて金額を出力しなさい。
+'''
+money = 0
+num = int(input("注文するコーヒーの数: "))
+
+if num>0 and num<=10:
+    money = num*2000
+elif num>10:
+    money = 2000 + (num-10)*1500
+else:
+    print("平均....")
+
+print(money, "円です。")
+
+
+
+
+#<Quiz>
+'''
+3. 整数を入力されて下記の通り出力しなさい。
+
+   3の倍数ですし, 4の倍数です。
+   3の倍数です。
+   4の倍数です。
+   3の倍数も, 4の倍数でもありません。
+
+   0は 3の倍数も4の倍数でもありません。
+   '''
+   num = int(input("整数入力: "))
+
+if num == 0: 
+    print("0は3の倍数も, 4の倍数でもありません。") 
+if num%3 == 0 and num%4 == 0:
+    print("%dは3の倍数ですし, 4の倍数です。"% num)    
+elif num%3 == 0:
+    print("%dは3の倍数です。"% num)
+elif num%4 == 0:
+    print("%dは4の倍数です。"% num)
+else:
+    print("%dは 3の倍数も4の倍数でもありません。"% num)
+    
+    
+    
+    
+    
+ #<Quiz>
+ '''
+ 4. 飛行機を乗る時に30分がかかる距離の基本料金は30000円, 10分当たり
+ 追加料金は5000円ずつ付け加わる.飛行機を乗る時間を入力して料金計算機を作りなさい。
+'''
+money = 30000
+time = int(input("時間入力（分）: "))
+
+if time> 30:
+    time -=30
+    if time%10 == 0:      
+        money += (time/10)*5000
+    else:
+        money+= (time//10)*5000 + 5000 
+    
+
+print("料金: %d円"% money)
