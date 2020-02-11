@@ -123,7 +123,7 @@ for day in range(1, 31,1):
     
     
     
-#list文　<Quiz>8
+　<Quiz>8
 '''
  * 「st = "It is a fun Python class"」次の文字列の中で「a」の個数と 「s」の個数,
   総個数(空白込み)を出力しなさい。
@@ -147,3 +147,37 @@ for i in st:
 print("総個数: %d"%cnt)
 print("a個数: %d"%cnt_a)
 print("s個数: %d"%cnt_s)
+
+
+
+
+
+<QUIZ>９
+'''
+ * 下記の通り出力しなさい。
+
+   1    2    3    4    5
+   6    7    8    9    10
+   11   12   13   14   15
+   16   17   18   19   20
+   21   22   23   24   25
+'''
+cnt = 1
+
+for i in range(0,5,1):
+    for j in range(0,5,1):
+        print(cnt, end='\t')
+        cnt += 1
+    print()
+    
+    
+    
+    
+<QUIZ>10
+'''
+* 九九 全体を出力しなさい。
+'''
+for i in range(1,10,1):
+    for j in range(2,10,1):  
+        print("%d * %d = %d"% (j,i,i*j),end='\t')  
+    print()
