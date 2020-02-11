@@ -1,0 +1,149 @@
+<Quiz>
+'''
+1. 1~10の合を出力しなさい。
+
+   ex) 1~10 sum:55
+'''
+s = 0
+for i in range(1, 11, 1):
+    s += i
+print("1~10 sum:",s)
+
+
+
+
+<Quiz>
+'''
+2. 1~10までの数の中で,偶数の合と奇数の合を分けて出力しなさい。
+
+
+      ex)  odd number sum: 25
+           even number sum: 30
+'''
+evensum = 0
+oddsum = 0         
+for i in range(1, 11, 1):
+    if i%2 == 0:
+        evensum += i 
+    else:
+        oddsum += i 
+
+
+print("even number sum:", evensum)
+print("odd number sum:", oddsum)
+
+
+
+
+<Quiz>
+'''
+3. 1から入力された数までの合を出力しなさい。
+
+
+   ex) Input => 5
+       1~5 sum: 15
+'''
+num = int(input("Input => "))
+s = 0
+
+for i in range(1, num+1, 1):
+    s += i
+
+print("1~5 sum:",s)
+
+
+
+<Quiz>
+'''
+4. 始め値,終わり値,増価値を入力されて始め値と
+   終わり値の中で７の倍数を出力しなさい。
+'''
+st = int(input("start: "))
+end = int(input("end: "))
+gr = int(input("grow: "))
+
+
+for i in range(st,end,gr): 
+    if i%7 == 0:
+        print(i, end=" ")
+
+
+
+<Quiz>
+'''
+5. 1~100 の中で 3の倍数ですし 5の倍数の数たちの合を出力しなさい。
+'''
+s = 0
+for i in range(1, 101, 1):
+    if i%3 == 0 and i%5 == 0:
+        s += i  
+print("1~100 の中で 3と5の倍数の合: ", s)
+
+
+
+
+
+<Quiz>
+'''
+6.入力された二つの数の中の全ての数の合を出力しなさい。
+'''
+s=0
+n1 = int(input("入力: "))
+n2 = int(input("入力: "))
+
+
+if n1 < n2:
+    for i in range(n1, n2+1,1):
+        s += i   
+    print("%d~%dまでの合:%d "%(n1, n2, s))
+
+
+if n2 < n1:
+    for i in range(n2, n1+1, 1):
+        s += i   
+    print("%d~%dまでの合: %d "%(n2, n1, s)) 
+
+
+
+<Quiz>
+'''
+7. 始めの日に10円をためて,次の日は前の日の2倍を貯める方法で1ヶ月（30日）
+    で貯めた金額を出力しなさい。
+'''
+double=10
+won=10
+
+
+for day in range(1, 31,1):
+    print("%d日: %d円"%(day, won))
+    double *= 2
+    won += double
+    
+    
+    
+    
+    
+#list文　<Quiz>8
+'''
+ * 「st = "It is a fun Python class"」次の文字列の中で「a」の個数と 「s」の個数,
+  総個数(空白込み)を出力しなさい。
+
+
+      総個数 : 24
+       a 個数: 2
+       s 個数: 3
+   '''
+   cnt= cnt_a=cnt_s=0
+st = "It is a fun Python class"
+
+    
+for i in st:
+    if i == "a":
+        cnt_a += 1
+    if i == "s":
+        cnt_s += 1
+    cnt += 1
+
+print("総個数: %d"%cnt)
+print("a個数: %d"%cnt_a)
+print("s個数: %d"%cnt_s)
