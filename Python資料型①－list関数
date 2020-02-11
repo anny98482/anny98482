@@ -1,0 +1,255 @@
+# 例題１
+'''
+ユーザーから5個の整数を入力された後にその整数の合計を出力しなさい。
+'''
+ls=[0,0,0,0,0] 
+s=0
+
+for i in range(len(ls)):
+    ls[i]=int(input("%d番目 入力: "%(i+1)))
+    s += ls[i]
+
+print(ls)
+print(s)
+
+
+
+ # 各インデックス間の演算
+
+ls = [10,20,30]
+arr = [40,50,60]
+
+#加え算#   
+str1 = [0,0,0]  
+for i in range(len(str1)): #str1[0] = ls[0]+arr[0]
+    str1[i] = ls[i]+arr[i]
+print(str1)
+
+#掛け算# 
+str2 = [0,0,0]   
+for i in range(len(str2)): 
+    str2[i] = ls[i]*3
+print(str2)
+
+
+
+
+#<リスト操作関数>
+
+ls = [2,3,1]
+print(ls)
+'''
+ls.append(4) # append 関数 - 一番後ろに値を追加する関数
+print(ls)
+
+ls.pop()
+print(ls)  # pop 関数 - 一番後ろの値を抜いて抜いた値を出力
+
+ls.sort()
+print(ls)  # sort 関数 - lsの値を昇べきの順に整列する
+
+
+ls.reverse()
+print(ls)  # reverse 関数 - lsの値を逆順に 覆す
+
+
+del(ls[2])  # del 関数 - 入力した値を 削除する(ls[]値に入力)
+print(ls)
+
+print(ls.index(3))  #index 関数- index(3)の値を出力
+
+ls.insert(2,4)   # insert関数 -  2の所に 4 入力
+print(ls) 
+
+ls.remove(3)   # remove関数 -  3削除 
+print(ls) 
+
+ls.extend([4,5,6])   # exten関数 -  一番後ろの値を拡張([]で入力)
+print(ls)
+
+ls.extend([1,1,2])   # extend関数 -  一番後ろに入力値を拡張([]で入力) , 重複値保存可能
+
+print(ls.count(1))     # count 関数 - lsで探す値の数を数える
+'''
+
+
+
+
+
+#Quiz1
+
+'''
+
+ユーザーから入力された数を整列して出力してください。
+割り当てられたスペースを先に入力して、入力された数だけのスペースを割り当ててください。
+
+'''
+ls=[]
+n = int(input("いくつのスペースを作りますか? "))   
+
+for i in range(n):                 
+    ls.append(int(input(str(i+1)+"番目数字:")))     
+
+ls.sort()                   
+ 
+print(ls)
+
+
+
+
+#Quiz2
+
+'''
+
+List = ["山田", '2002年入社', "間違えた所","等級 B"]
+
+次のようなリストでユーザーから削除する値を入力してもらい削除し、
+次の内容を追加してください。
+
+["山田", '2002年入社', "間違えた所","等級 B"]
+削除する値入力: 間違えた所
+追加する名前入力: 山本
+追加する名前入力: 渡辺
+追加する名前入力: 村本
+山田/2002年入社/等級 B
+山本/2002年入社/等級 B
+渡辺/2002年入社/등等級 B
+村本/2002年入社/等級 B
+'''
+ls=["山田", '2002年入社', "間違えた所","等級 B"]
+print(ls)
+
+rm = input("削除する値入力: ")
+ls.remove(rm)
+#print(ls)
+
+copyls = ls[:]
+for i in range(0,3,1):
+    name = input("追加する名前入力: ")
+    copyls[0]= name
+    ls.extend(copyls)
+#print(ls)
+for i in range(len(ls)):
+    if i%3 == 0 and i != 0:      
+        print()    
+    print(ls[i], end='/')
+
+
+
+#Quiz3
+'''
+ls=[10,5,20,7,9,31,12,11,19,32]
+
+1. list 2個を作り、奇数番目の値、偶数番目の値を別々に保存して、
+   偶数番目の値から奇数番目の値の差を新しい list に保存後、
+   出力してください。
+
+    - 結果:[-5,-13,22,-1,13]
+
+2. lsで偶数番目と奇数番目の和をそれぞれ探し、その和に差を求めなさい。
+   奇数番目(index 1、3、5、7、9)-偶数番目(index 0、2、4、6、8)
+
+    - 結果: 16
+
+3.lsに保存された値をinvertLsに逆に保存してください。
+
+4. lsの値を昇順にsortLsに保存して出力
+   lsの値を降順にreverseLsに保存して出力
+'''
+#Quiz3－１
+ls=[10,5,20,7,9,31,12,11,19,32]
+
+even = [0,0,0,0,0]
+odd = [0,0,0,0,0]
+result = [0,0,0,0,0]
+
+k = 0
+for i in range(1,10,2):
+    even[k] = ls[i]
+    k+=1
+
+k = 0
+for i in range(0,10,2):
+    odd[k] = ls[i]
+    result[k] = even[k]-odd[k]
+    k+=1
+
+print(ls)
+print(even)
+print(odd)
+print(result)
+
+
+
+
+#Quiz3－2
+ls=[10,5,20,7,9,31,12,11,19,32]
+even, odd = 0,0
+
+for i in range(1,10,2):
+    even += ls[i]
+
+for i in range(0,10,2):
+    odd += ls[i]
+
+print(odd-even)
+
+
+
+#Quiz3－3
+ls=[10,5,20,7,9,31,12,11,19,32]
+invertLS=[0,0,0,0,0,0,0,0,0,0]
+
+j=9
+for i in range (0,10,1):
+    invertls[j]= ls[i]
+    j-=1
+
+print(ls)
+print(invertls)
+
+
+
+
+#Quiz3－4
+ls=[10,5,20,7,9,31,12,11,19,32]
+
+asc=[0,0,0,0,0,0,0,0,0,0]  
+desc=[0,0,0,0,0,0,0,0,0,0]  
+
+
+asc = ls[:]
+asc.sort()
+desc = asc[:]
+desc.reverse()
+
+
+print(ls)
+print(asc)
+print(desc)
+
+
+
+
+
+#Quiz４_ 順位の番号を付ける
+
+score = [82,85,76,79,96]
+rank = [1,1,1,1,1]
+
+for i in range(len(score)):
+    for j in range(len(score)):
+        if score[i] < score[j]:
+            rank[i] += 1
+print("SCORE\t RANK")
+
+i=0
+while i<5:
+    print(score[i], "\t", rank[i])
+    i+=1
+
+
+
+
+
+
