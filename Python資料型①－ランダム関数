@@ -1,0 +1,89 @@
+#Quiz1
+
+'''
+1. じゃんけんプログラム
+  - コンピューターはじゃんけんながら無作為に出す。
+  - ユーザーが勝った場合、負けた場合、引き分けた場合、間違った場合を区分して出力する。
+  '''
+  import random
+
+print("==========  じゃんけんプログラム =============")
+print("ジャン, ケン, ポン の中から入力してください。..")
+
+
+while True:
+    com = random.choice(["ジャン","ケン","ポン"])
+    user = input("ユーザー = > ")
+    print("パソコン = > ",com)
+
+
+    if user == "ジャン" or user == "ケン" or user == "ポン":
+        if com == user:
+            print("引き分けました.")
+        elif (user == "ジャン" and com == 'ポン')or\
+             (user == "ケン" and com == 'ジャン')or\
+             (user == "ポン" and com == 'ケン'):           
+             print("勝ちました。")
+        else:
+            print("負けました。")
+    else:
+        print("間違って入力しました。 もう一度入力してください。")
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#Quiz2
+
+'''
+2.宝くじの抽選プログラム
+ - 範囲は1~46で、抽選された番号は6個、ボーナス番号は1つである。
+ - 重複値がないこと。
+ - 抽選された番号は整列(上り順)でなければならない。
+ - ボーナス番号は並び替えに関わらず、最後に出力する。
+'''
+import random
+
+lotto = [];
+
+
+print("======宝くじの抽選======")
+while True:
+    num = random.randrange(1,47)
+    if lotto.count(num)== 0: 
+        lotto.append(num)
+    if len(lotto) == 6:      
+        break
+
+
+
+print("抽選された番号: ", end='')
+lotto.sort()
+for i in range(len(lotto)):
+    print(lotto[i],end='')
+print()
+
+
+        #ボーナス番号#
+while True:
+    num = random.randrange(1,47)
+    if lotto.count(num)==0:
+        lotto.append(num)
+    if len(lotto)==7:
+        break
+print("ボーナス番号:%d"%lotto[6])
+
+
+
+
+
+
+
+
+
