@@ -1,0 +1,177 @@
+#dictionary#
+#dictionary Quiz1
+
+'''
+1. 適切なキーと値を入力して保存してください。.
+
+  名前(key)入力: ディズニー
+  値(value)入力: ミッキーマウス
+ 名前(key)入力: アナと雪の女王
+  値(value)入力: エルサ
+ 名前(key)入力: アラジン
+  値(value)入力: アラジン
+ 名前(key)入力: くまのプーさん
+  値(value)入力: プー
+ 名前(key)入力: ディズニー プリンセス
+  値(value)入力: 白雪姫
+  {'ディズニー':"ミッキーマウス", "アナと雪の女王":"エルサ", "アラジン":"アラジン",
+   "くまのプーさん":"プー","ディズニー プリンセス":"白雪姫"}
+
+'''
+Disney= {}
+
+for i in range(0,5,1):
+    key = input("名前(key) 入力:")
+    val = input(" 値(value)入力:")
+    Disney[key] = val
+
+print(Disney)
+
+
+
+
+
+
+
+
+
+
+#dictionary例題ー食堂メニュー登録システム
+menu={}
+
+print("1.メニュー登録\n2. 価格を見る\n3. 価格修正\n4. 終了")
+
+while True:
+    num= int(input(">>>"))
+    if num==1:
+        name=input("メニュー入力: ")
+        if menu.get(name) != None:
+            print("メニューが存在します。")
+        else:   
+            menu[name]= input("価格入力: ")
+    elif num==2:
+        for i in menu.keys():
+            print(i,":", menu[i])
+    elif num==3:
+        name=input("修正するメニュー: ")
+        if menu.get(name) == None:
+            print("メニューがありません。")
+        else:
+            menu[name]= input("修正価格: ")
+    elif num==4:
+        print("プログラムを終了します")
+        break
+
+
+
+
+
+
+
+#dictionary関数例題3－スケジュール表　
+info={}; date=[]; bl=True; num = 0
+
+while bl:
+    print("1.スケジュール登録"); print("2. 検索");print("3. 終了")
+    num=int(input(">>> "))
+
+    if num == 1:
+        date.append(input("日(15日) 入力: "))
+        print("時間帯別スケジュール入力")
+        date.append(input("時間 : スケジュール (入力)"))
+        date.append(input("時間 : スケジュール (入力)"))
+        info[date[0]] = date[:]
+
+    elif num == 2:
+        day = input("確認する日付入力: ")
+        if info.get(day) == None:   print("探そうとする日がありません。")
+        else:       print(day,"スケジュール: ",info.get(day))
+
+    elif num == 3:
+        print("プログラムを終了します。")
+        bl = False
+
+    date.clear()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    #dictionary関数例題 - 学生人的事項の登録
+    
+    import copy
+
+info1={}
+info2={}
+
+print("========== 人的事項管理システム============") 
+print("1. 人的事項登録\n2.検索\n3. 修正\n4. 削除\n5. 全学生照会\n6. 終了")
+
+while True:     
+    sel = int(input("入力:  "))
+
+    if sel == 1:
+        stuNum = input("学籍番号: "); name = input("名前: "); grade = input("等級: "); addr = input("住所: ")
+        info2["学籍番号"]=stuNum   
+        info2["名前"]=name
+        info2["等級"]=grade
+        info2["住所"]=addr  
+        info1[stuNum]= copy.deepcopy(info2)  
+        info2.clear()  
+        
+        print("登録完了!!!\n")
+ 
+
+    elif sel == 2:
+        stuNum = input("検索する学籍番号入力: ")
+
+        if info1.get(stuNum) == None:   
+            print("探す学生がいません。")
+        print(info1[stuNum])
+
+
+    elif sel == 3:
+        stuNum = input("修正する学籍番号入力: ")
+
+        if info1.get(stuNum) == None:   
+            print("探す学生がいません。")
+        else:
+            print(info1.get(stuNum))  
+            num = input("修正する項目入力: ")
+            ch = input("修正する値入力: ")
+            info1[stuNum][num] = ch  
+
+    elif sel == 4:
+        stuNum = input("削除する学籍番号入力: ")
+
+        if info1.get(stuNum) == None:  
+            print("削除する学生がいません。")
+        else:        
+            print(info1.pop(stuNum), "削除しました。!!\n")   
+
+    elif sel == 5: 
+        for k,v in info1.items():  
+            for i,j in v.items():  
+                print(i,":",j,end = " ")
+            print()
+ 
+    elif sel == 6:
+        print("プログラムを終了します。")
+        break
+
+    else:
+        print("間違って入力しました。")
+
+    
+    
+    
+    
+
+
+
+
+
