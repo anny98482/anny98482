@@ -1,0 +1,173 @@
+package Drink;
+
+import java.util.Scanner;
+
+
+
+public class Drink{
+
+  public static void main(String args[]){
+
+
+
+  Scanner sc = new Scanner(System.in);
+
+  String con;
+
+  int money,menu,pay=0;
+
+  String drink="", select="";
+
+  int m1000=0,m500=0,m100=0,m10=0;
+
+
+
+  System.out.println("------------------------------------------");
+
+  System.out.println("1.コ?ラ(600), 2.コ?ヒ?(550) 3.ジュ?ス(370) 4.水(420)");
+
+  System.out.println("------------------------------------------");
+
+  System.out.println();
+
+
+
+  System.out.print("お金をチャ?ジしてください。 : ");
+
+  money = sc.nextInt();
+
+ 
+
+  while(true){
+
+
+
+	System.out.print("?み物の番?を入力してください。 : ");
+
+	menu = sc.nextInt();
+
+	
+
+	switch(menu){
+
+	     case 1:
+
+		select="コ?ラ";
+
+		pay=600;
+
+		break;
+
+
+
+	     case 2:
+
+		select="コ?ヒ?";
+
+		pay=550 ;
+
+		break;	
+
+
+
+	     case 3:
+
+		select="ジュ?ス";
+
+		pay=370;
+
+		break;
+
+
+
+	     case 4:
+
+		select="水";
+
+		pay=420;
+
+		break;
+
+
+
+	     default :
+
+		System.out.println("メニュ?をもう一度選んでください。(1~4)");
+
+			
+
+	  }//switch
+
+
+
+	if(money < pay){
+
+	  System.out.println("お金が足りないんです。");
+
+	  System.exit(0);
+
+	}			
+
+	else {
+
+	drink = drink + select + " ";
+
+	money = money-pay;
+
+
+
+	System.out.println("?額は"+money+"円です。");
+
+
+
+ 	System.out.println("?み物を追加しますか? (y or n)");
+
+	con=sc.next();
+
+	
+
+
+
+	if(con.equals("n")||con.equals("N"))
+
+		break;
+
+	
+
+    System.out.println();
+
+    
+
+    }
+
+
+
+  }//while
+
+
+
+  System.out.println("ご利用ありがとうございました。");
+
+  System.out.println();
+
+  System.out.println("選んだ?み物は"+ drink +" で?額は"+money+"円です。");
+
+
+
+  m1000= money / 1000;
+
+  m500=(money%1000)/500;
+
+  m100=((money%1000)%500)/100;
+
+  m10=(((money%1000)%500)%100)/10;
+
+
+
+   System.out.println("1000円" + m1000 +"個, 500원" + m500 + "個, 100円" + m100 +"個, 10円" + m10 + "個");
+
+
+
+ }//main
+
+}//Machine
