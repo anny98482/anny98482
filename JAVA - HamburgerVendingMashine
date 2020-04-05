@@ -1,0 +1,249 @@
+
+	package burger;
+	 
+	import java.awt.BorderLayout;
+	import java.awt.Button;
+	import java.awt.Color;
+	import java.awt.Font;
+	import java.awt.Label;
+	import java.awt.Panel;
+	import java.awt.TextArea;
+	import java.awt.TextField;
+	import java.awt.event.ActionEvent;
+	import java.awt.event.ActionListener;
+	import java.awt.event.WindowAdapter;
+	import java.awt.event.WindowEvent;
+	import javax.swing.ImageIcon;
+	import javax.swing.JButton;
+	import javax.swing.JFrame;
+	import javax.swing.JOptionPane;
+	 
+	public class Hamberger {
+	    int count = 0;
+	    String show = "";
+	 
+	    public Hamberger() {
+	 
+	        // デザイン
+	        // フレーム設定
+	        JFrame frame = new JFrame("ハンバーガー自動販売機");
+	        frame.setBounds(0, 0, 625, 1000);
+	        frame.setBackground(Color.black);
+	 
+	        // フォント
+	        Font font = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
+	        Font font1 = new Font(Font.MONOSPACED, Font.BOLD, 22);
+	 
+	        // 北側
+	        Panel pNorth = new Panel();
+	        pNorth.setBackground(new Color(255, 255, 215));
+	        pNorth.setLayout(null);
+	        pNorth.setSize(0, 500);
+	        pNorth.setFont(font);
+	 
+	        // 配列設定
+	        String menu[] = { "ビッグマックバーガー", "てりたまバーガー", "ダブルチーズバーガー", "スパチキバーガー", "ベーコンレタスバーガー", "えびフィレオ", "チーズバーガー", "てりやきマックバーガー" };
+	        int price[] = { 500, 550, 600, 650, 700, 750, 800, 850 };
+	        JButton bt[] = new JButton[menu.length];
+	        TextField suja[] = new TextField[menu.length];
+	        Button minus[] = new Button[menu.length];
+	        Button plus[] = new Button[menu.length];
+	        JButton ok[] = new JButton[menu.length];
+	        Label l[] = new Label[menu.length];
+	        ImageIcon icon[] = new ImageIcon[menu.length];
+	 
+	        // ボタン設定
+	        for (int i = 0; i < menu.length; i++) {
+	 
+	            // ハンバーガーボタン
+	            bt[i] = new JButton(menu[i]);
+	            if (i < 4) {
+	                bt[i].setBounds(25 + i * 150, 50, 100, 100);
+	            } else {
+	                bt[i].setBounds(25 + (i - 4) * 150, 300, 100, 100);
+	            }
+	            icon[i] = new ImageIcon(i + ".png");
+	            bt[i].setIcon(icon[i]);
+	 
+	            // 数字txtボタン
+	            suja[i] = new TextField("0");
+	            suja[i].setBackground(Color.white);
+	            suja[i].setEditable(false);
+	            suja[i].setBounds(bt[i].getX() + 30, bt[i].getY() + 130, 40, 20);
+	 
+	            // "-" ボタン
+	            minus[i] = new Button("-");
+	            minus[i].setBounds(bt[i].getX(), suja[i].getY(), 20, 20);
+	            minus[i].setEnabled(false);
+	 
+	            // "+" ボタン
+	            plus[i] = new Button("+");
+	            plus[i].setBounds(bt[i].getX() + (100 - 20), suja[i].getY(), 20, 20);
+	            plus[i].setEnabled(false);
+	 
+	            // 値段
+	            l[i] = new Label(price[i] + "円");
+	            l[i].setBounds(bt[i].getX() + 20, suja[i].getY() - 25, 100, 20);
+	 
+	            // 確認ボタン
+	            ok[i] = new JButton("確認");
+	            ok[i].setBounds(bt[i].getX(), suja[i].getY() + 30, 100, 20);
+	            ok[i].setEnabled(false);
+	 
+	            pNorth.add(bt[i]);
+	            pNorth.add(suja[i]);
+	            pNorth.add(minus[i]);
+	            pNorth.add(plus[i]);
+	            pNorth.add(l[i]);
+	            pNorth.add(ok[i]);
+	        }
+	 
+	        // 中央部
+	        TextArea ta = new TextArea("", 0, 0, TextArea.SCROLLBARS_VERTICAL_ONLY);
+	        ta.setText("   商品名        値段        数量        都合\n\n");
+	        ta.setBackground(Color.white);
+	        ta.setEditable(false);
+	        ta.setFont(font1);
+	 
+	        // 南側
+	        Panel pSouth = new Panel();
+	        pSouth.setFont(font);
+	        pSouth.setBackground(new Color(255, 255, 215));
+	 
+	        Button bt1 = new Button("注文");
+	        Button bt2 = new Button("リセット");
+	        Button bt3 = new Button("閉める");
+	        pSouth.add(bt1);
+	        pSouth.add(bt2);
+	        pSouth.add(bt3);
+	 
+	        // 注文ボタン
+	        bt1.addActionListener(new ActionListener() {
+	 
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                JOptionPane.showMessageDialog(null, ta.getText() + " 注文しました。. \nご利用ありがとうございます。.");
+	                for (int i = 0; i < menu.length; i++) {
+	                    bt[i].setEnabled(true);
+	                    minus[i].setEnabled(false);
+	                    plus[i].setEnabled(false);
+	                    suja[i].setText("0");
+	                    ta.setText("   商品名        値段        数量        都合\n\n");
+	 
+	                }
+	            }
+	        });
+	 
+	        // リセット・ボタン
+	        bt2.addActionListener(new ActionListener() {
+	 
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                for (int i = 0; i < menu.length; i++) {
+	                    bt[i].setEnabled(true);
+	                    minus[i].setEnabled(false);
+	                    plus[i].setEnabled(false);
+	                    suja[i].setText("0");
+	                    ta.setText("   商品名        値段        数量        都合\n\n");
+	 
+	                }
+	            }
+	        });
+	 
+	 
+	        //bt3 閉めるボタン
+	        
+	        bt3.addActionListener(new ActionListener() {
+	            
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                System.exit(0);
+	            }
+	        });
+	 
+	 
+	        //コンポーネント
+	        frame.add(pNorth, BorderLayout.NORTH);
+	        frame.add(ta, BorderLayout.CENTER);
+	        frame.add(pSouth, BorderLayout.SOUTH);
+	        frame.setVisible(true);
+	 
+	        // イベント段
+	        for (int i = 0; i < menu.length; i++) {
+	            int j = i;
+	 
+	            // ハンバーガーボタンイベント
+	            bt[i].addActionListener(new ActionListener() {
+	                @Override
+	                public void actionPerformed(ActionEvent e) {
+	                    minus[j].setEnabled(true);
+	                    plus[j].setEnabled(true);
+	                    bt[j].setEnabled(false);
+	                    ok[j].setEnabled(true);
+	 
+	                    count = 0;
+	                }
+	            });
+	 
+	            // "-" ボタンイベント
+	            minus[i].addActionListener(new ActionListener() {
+	 
+	                @Override
+	                public void actionPerformed(ActionEvent e) {
+	                    if (count > 0) {
+	                        count = count - 1;
+	                        suja[j].setText(count + "");
+	                        ok[j].setEnabled(true);
+	                    } else {
+	                        minus[j].setEnabled(false);
+	                    }
+	                }
+	            });
+	            
+	            // "+"ボタンイベント
+	            plus[i].addActionListener(new ActionListener() {
+	 
+	                @Override
+	                public void actionPerformed(ActionEvent e) {
+	                    count = count + 1;
+	                    suja[j].setText(count + "");
+	                    ok[j].setEnabled(true);
+	                    if (count > 0) {
+	                        minus[j].setEnabled(true);
+	                    }
+	                }
+	            });
+	            
+	            //確認ボタンイベント
+	            ok[i].addActionListener(new ActionListener() {
+	 
+	                @Override
+	                public void actionPerformed(ActionEvent e) {
+	                    show = bt[j].getActionCommand();
+	                    ta.append("   " + show + "       " + price[j] + "        " + count + "         " + price[j] * count
+	                            + "円" + "\n");
+	                    ok[j].setEnabled(false);
+	                }
+	            });
+	 
+	        }
+	 
+	        // 終了
+	        frame.addWindowListener(new WindowAdapter() {
+	            @Override
+	            public void windowClosing(WindowEvent e) {
+	                System.exit(0);
+	            }
+	        });
+	    }
+	 
+	    // メイン
+	    public static void main(String[] args) {
+	        new Hamberger();
+	    }
+	 
+	}
+
+
+
+	
