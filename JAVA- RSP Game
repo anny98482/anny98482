@@ -1,0 +1,198 @@
+import java.util.Scanner;
+
+public class RSP {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		
+		int coinCount = 0;
+		int wCount = 0;
+		int dCount = 0;
+		int lCount = 0;
+		
+		System.out.println("*** じゃん? ゲ?ム ***");
+		System.out.println("# コインを入れてください。 (”入れるコインの?を入力してください。");
+		System.out.print("> ");
+		coinCount = sc.nextInt();
+		
+		System.out.println("\n# 該?するメニュ?の?字を入力してください。");
+		
+		outer: while(true) {
+			
+			System.out.println("# 現在のコインの?: " + coinCount);
+			System.out.println("-------------------------");
+			System.out.println("# 1. じゃん? ゲ?ム スタ?ト");
+			System.out.println("# 2. ?績見る");
+			System.out.println("# 3. コイン投入する");
+			System.out.println("# 4. プログラム終了");
+			System.out.println("-------------------------");
+			System.out.print("> ");
+			int menu = sc.nextInt();
+			
+			switch(menu) {
+			
+			case 1:
+				
+				if(coinCount == 0) {
+					System.out.println("# コインがありません。");
+					System.out.println("# メニュ?からコインを入れてください。");
+					break; //switch break 
+				}
+				
+				while(true) {
+					
+					int comNum = (int) (Math.random()*3);
+					int convertNum;
+					
+					if(coinCount == 0) {
+						System.out.println("\n-------------------------");
+						System.out.println("# コインを使い切りました。.");
+						System.out.println("# ゲ?ムを?けるにはコインをもっと入れてください。");
+						System.out.println("# ゲ?ムをやめてメインメニュ?に?るには"終了"と入力してください。");
+						System.out.print("> ");
+						String select = sc.next();
+						
+						if(select.equals("終了")) {
+							System.out.println("# メインメニュ?に?ります。");
+							break;
+						} else {
+							int addCoin = Integer.parseInt(select);
+							System.out.println("# コインを " + addCoin + "個追加します。");
+							coinCount = addCoin;
+						}
+						
+					}
+					
+					
+					System.out.println("\n-------------------------");
+					System.out.println("# じゃん, ?, ぽんの中で一つ入力してください。");
+					System.out.println("# ゲ?ムを終了するには、"終了"と入力してください。");
+					System.out.print("> ");
+					String myRSP = sc.next();
+					
+					if(myRSP.equals("じゃん")) {
+						convertNum = 0;
+					} else if(myRSP.equals("?")) {
+						convertNum = 1;
+					} else if(myRSP.equals("ぽん")) {
+						convertNum = 2;
+					} else if(myRSP.equals("終了")) {
+						System.out.println("じゃん? ゲ?ム終了!");
+						System.out.println("-------------------------");
+						break;
+					} else {
+						System.out.println("正確な?字をを入力してください！");
+						continue;
+					}
+					
+					switch(comNum) {
+					
+					case 0:
+						System.out.println("# パソコンが出したのはじゃん!");
+						System.out.println("-------------------------");
+						if(convertNum == 0) {
+							System.out.println("引き分けました。");
+							dCount++;
+						} else if(convertNum == 1) {
+							System.out.println("勝ちました。");
+							wCount++;
+						} else if(convertNum == 2) {
+							System.out.println("負けました。");
+							lCount++;
+						}
+						break;
+						
+					case 1:
+						System.out.println("#パソコンが出したのは?!");
+						System.out.println("-------------------------");
+						if(convertNum == 0) {
+							System.out.println("負けました。");
+							lCount++;
+						} else if(convertNum == 1) {
+							System.out.println("引き分けました。");
+							dCount++;
+						} else if(convertNum == 2) {
+							System.out.println("勝ちました。");
+							wCount++;
+						}
+						break;
+						
+					case 2:
+						System.out.println("# パソコンが出したのは ぽん!");
+						System.out.println("-------------------------");
+						if(convertNum == 0) {
+							System.out.println("勝ちました。");
+							wCount++;
+						} else if(convertNum == 1) {
+							System.out.println("負けました。");
+							lCount++;
+						} else if(convertNum == 2) {
+							System.out.println("引き分けました。");
+							dCount++;
+						}
+						break;
+					} // switch(comNum)
+					
+					coinCount--;
+					System.out.println("# ?ったコイン: " + coinCount + "個");
+					
+					
+					
+				} // case 1의 while(true)
+				
+				
+				
+				
+				break;
+				
+			case 2:
+				System.out.println("\n-------------------------");
+				System.out.println("*** ゲ?ムの結果 ***");
+				System.out.printf("勝ちた回?: %d回\n引き分けた回?: %d回\n負けた回?: %d回\n"
+						, wCount, dCount, lCount);
+				System.out.println("-------------------------");
+				break;
+				
+			case 3:
+				System.out.println("\n-------------------------");
+				System.out.println("コインを入れてください。.");
+				System.out.print("> ");
+				int menuAddCoin = sc.nextInt();
+				System.out.println(menuAddCoin + "個のコインを入れました。");
+				coinCount += menuAddCoin;
+				break;
+				
+			case 4:
+				System.out.println("プログラムを終了します。 [Y / N]");
+				System.out.print("> ");
+				String quit = sc.next();
+				if(quit.equals("y") || quit.equals("Y")) {
+					break outer;
+				} else {
+					System.out.println("終了を取り消します。");
+					break;
+				}
+				
+			default:
+				System.out.println("#正確なメニュ?を入力してください。");
+			
+			} //end switch
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		} // outer while true
+
+
+
+	} // end main
+
+} // end class
+
