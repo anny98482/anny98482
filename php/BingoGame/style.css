@@ -1,0 +1,25 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  font-size: 16px;
+}
+
+#container {
+  margin: 0 auto;
+  width: 322px;
+}
+
+td, th {
+  width: 60px;
+  height: 45px;
+}
+
+td {
+  background: #F06292;
+  color: #fff;
+}
+
+th {
+  color: #F06292;
+  font-size: 22px;
+}
